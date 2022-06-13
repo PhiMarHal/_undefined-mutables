@@ -1,0 +1,8 @@
+{
+  "name": "_undefined mutables",
+  "description": "ERROR: description not found. [collection_name] is a collection of (??? SUPPLY ???) (??? TYPE ???), on Optimism. Mint is open for {price}, directly from the smart contract.",
+  "image": "https://raw.githubusercontent.com/PhiMarHal/_undefined-mutables/main/resources/_um_logo.png",
+  "external_link": "https://github.com/PhiMarHal/_undefined-mutables",
+  "seller_fee_basis_points": 250,
+  "fee_recipient": "0xBBAc898df94069793F075405f2958733ca45A1D9" 
+}
