@@ -8,7 +8,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 
 contract _um is ERC721, Ownable {
 
-    string private _contractURI;
+    string private _contractURI                     = "";
     uint256 public totalSupply                      = 0;
     uint256 public mintCost                         = 0.004 ether;
     uint256 constant public RAISE_MINT_COST_BPS     = 200;
@@ -79,13 +79,13 @@ contract _um is ERC721, Ownable {
     
     // minting is technically infinite but pragmatically capped by proportional cost growth 
 
-    function mint() public payable {
+    function mint(address _recipient) public payable {
         require(msg.value >= mintCost, "UM: not enough eth to mint");
 
         payable(owner()).transfer(mintCost);
         mintCost += mintCost * RAISE_MINT_COST_BPS / 10000;
 
-        _safeMint(msg.sender, totalSupply);
+        _safeMint(_recipient, totalSupply);
         totalSupply++;
 
         // send extra eth back if any
