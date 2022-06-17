@@ -38,10 +38,11 @@ contract _um_bulkminter {
 
     //** BULK MINT **//
     // _amount number of mutables to mint at once
-    // msg.value should be at least the sum of the series
+    // _recipient array of addresses for each mint, length should be = to _amount
+    // will mint as many as possible, up to to the specified _amount
     // any extra ETH is refunded
     // for simplicity, use _amount * cost() * 2
-    function mintMany(uint256 _amount) payable public {
+    function mintMany(uint256 _amount, address[] memory _recipient) payable public {
 
         uint256 _balance = msg.value;
         uint256 i = 0;
@@ -50,7 +51,16 @@ contract _um_bulkminter {
         do {
             uint256 _value = cost(); // cost increases with each mint
             _balance -= _value;
-            _um(UM).mint{value:_value}(msg.sender);
+
+            // mint to next _recipient as long as there's more addresses
+            if(i < _recipient.length) {
+                _um(UM).mint{value:_value}(_recipient[i]);
+            }
+            // else, just mint to the very first
+            // (_recipient arg with just msg.sender acts as bulk mint for msg.sender)
+            else {
+                _um(UM).mint{value:_value}(_recipient[0]);
+            }
             i++;
         }
         while (i < _amount && _balance >= cost());
