@@ -1,7 +1,7 @@
 {
   "name": "_undefined mutables",
   "description": "ERROR: description not found. [collection_name] is a collection of (??? SUPPLY ???) (??? TYPE ???), on (??? BLOCKCHAIN ???). Mint is open for {price}, directly from the smart contract.",
-  "image": "https://raw.githubusercontent.com/PhiMarHal/_undefined-mutables/main/resources/_um_logo.png",
+  "image": "https://ipfs.io/ipfs/QmTgeiCNnfnkwjtTJDtadMLdiGpW7dgSUHKQqyLswu9QE1",
   "external_link": "https://github.com/PhiMarHal/_undefined-mutables",
   "seller_fee_basis_points": 420,
   "fee_recipient": "0x07Bb4fCc27053BFB33CFA1b4A0B56a11e06e7e11" 
