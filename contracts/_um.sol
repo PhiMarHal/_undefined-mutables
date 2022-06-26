@@ -28,9 +28,10 @@ contract _um is ERC721, Ownable {
 
     Collection[] public collect ;
 
-    constructor(uint256 _mintCost) ERC721("_undefined mutables", "_UM") {
+    constructor(uint256 _mintCost, string memory _uri) ERC721("_undefined mutables", "_UM") {
         transferOwnership(msg.sender);
         mintCost = _mintCost; // 4000000000000000 for 0.004 eth
+        setContractURI(_uri);
     }
 
     // _um collection metadata for marketplaces
@@ -87,7 +88,8 @@ contract _um is ERC721, Ownable {
         collect.pop();
     }
     
-    // mint a new mutable and raise the mint cost
+    // minting is technically infinite but pragmatically capped by proportional cost growth 
+
     function mint(address _recipient) public payable {
         require(msg.value >= mintCost, "_um: not enough eth to mint");
 
